@@ -1,9 +1,11 @@
-import {} from 'react';
+import Header from './components/Header/Header';
 
-export default function App() {
+const App = () => {
 	return (
 		<>
-			<h1 className="text-5xl underline">Click on the Vite and React logos to learn more</h1>
+			<Header />
 		</>
 	);
-}
+};
+
+export default App;
