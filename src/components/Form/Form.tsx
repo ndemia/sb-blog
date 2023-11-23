@@ -1,53 +1,67 @@
 const Form = () => {
   return (
-    <form>
-      <h2>Plaats een blog bericht</h2>
+    <form className="flex flex-col font-sans">
+      <h2 className="mb-10 font-sans text-2xl font-bold text-sb-black">
+        Post a blog post
+      </h2>
 
-      <fieldset>
-        <label htmlFor="berichtnaam">Berichtnaam</label>
+      <fieldset className="mb-8">
+        <label
+          htmlFor="title"
+          className="text-sb-grey-800 mb-2 block text-sm font-bold"
+        >
+          Title
+        </label>
         <input
           type="text"
-          id="berichtnaam"
-          name="berichtnaam"
-          placeholder="Geen naam"
-          className="form__input"
+          id="title"
+          name="title"
+          placeholder="No name"
+          className="text-sb-grey-300 bg-sb-grey-100 text-sm italic"
           required
         ></input>
       </fieldset>
 
-      <fieldset>
-        <label htmlFor="categorie">Categorie</label>
-        <select id="categorie" required>
-          <option value="geen">Geen categorie</option>
+      <fieldset className="mb-8">
+        <label
+          htmlFor="category"
+          className="text-sb-grey-800 mb-2 block text-sm font-bold"
+        >
+          Category
+        </label>
+        <select id="category" required>
+          <option value="geen">Category</option>
         </select>
       </fieldset>
 
-      <fieldset>
-        <label htmlFor="afbeelding">Header afbeelding</label>
-        <div className="form__input__wrapper">
-          <button className="form__button--file">Kies bestand</button>
+      <fieldset className="mb-8">
+        <label
+          htmlFor="image"
+          className="text-sb-grey-800 mb-2 block text-sm font-bold"
+        >
+          Header image
+        </label>
+        <div>
+          <button>Choose file</button>
           <input
             tabIndex={-1}
             type="file"
-            id="afbeelding"
-            name="afbeelding"
+            id="image"
+            name="image"
             accept="image/*"
-            className="form__input form__input--file"
           ></input>
           {}
         </div>
       </fieldset>
 
-      <fieldset className="form__group">
-        <label htmlFor="bericht" className="form__label">
-          Bericht
+      <fieldset className="mb-8">
+        <label
+          htmlFor="text"
+          className="text-sb-grey-800 mb-2 block text-sm font-bold"
+        >
+          Text
         </label>
-        <textarea
-          id="bericht"
-          name="bericht"
-          className="form__textarea"
-          required
-        ></textarea>
+        <textarea id="text" name="text" required></textarea>
       </fieldset>
 
       <button>Submit</button>
