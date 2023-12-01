@@ -1,6 +1,8 @@
 import Form from "../../components/Form/Form";
 import Bloglist from "../../components/Bloglist/Bloglist";
 
+console.log(import.meta.env.VITE_API_VALUE);
+
 const Home = () => {
   return (
     <main className="flex justify-center gap-x-6 bg-sb-grey-100 p-10">
