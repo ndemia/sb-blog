@@ -1,3 +1,9 @@
+import Button from "../Button/Button";
+
+function chichi() {
+  console.log("hey");
+}
+
 const Form = () => {
   return (
     <form className="flex flex-col font-sans">
@@ -76,7 +82,7 @@ const Form = () => {
         ></textarea>
       </fieldset>
 
-      <button>Submit</button>
+      <Button text="Create blogpost" onClick={chichi}></Button>
     </form>
   );
 };
