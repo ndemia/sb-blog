@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import useFetch from "../../utilities/useFetch";
 import Button from "../Button/Button";
 
 function chichi() {
@@ -5,6 +7,18 @@ function chichi() {
 }
 
 const Form = () => {
+  const { data, isPending, error } = useFetch("/categories");
+
+  console.log(data);
+
+  // const getCategories = () => {
+  //   const response = useFetch("/categories");
+  //   console.log(response);
+  // };
+
+  // useEffect(() => {
+  // }, []);
+
   return (
     <form className="flex flex-col font-sans">
       <h2 className="mb-10 font-sans text-2xl font-bold text-sb-black">

@@ -5,28 +5,35 @@ interface fetchProps {
 }
 
 const useFetch = (props: string) => {
-  console.log("props", props);
   const baseURL: string = import.meta.env.VITE_API_BASE_URL;
   const APIValue: string = import.meta.env.VITE_API_KEY;
   // const [endPoint, setEndpoint] = useState("");
   const [data, setData] = useState<{}[]>([]);
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
-
-  const getPosts = async () => {
-    let response = await fetch(`${baseURL}${props}`, {
-      method: "GET",
-      headers: {
-        token: APIValue,
-      },
-    });
-    let data = await response.json();
-    return data;
-  };
+  const [isPending, setIsPending] = useState<boolean>(true);
+  const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
-    getPosts().then((data) => console.log(data.data));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${baseURL}${props}`, {
+          method: "GET",
+          headers: {
+            token: APIValue,
+          },
+        });
+        const data = await response.json();
+
+        setData(data);
+        setIsPending(false);
+        setError(null);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+          setIsPending(false);
+        }
+      }
+    };
+  }, [props]);
 
   return { data, isPending, error };
 };
