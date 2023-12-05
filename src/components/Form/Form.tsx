@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import {
+  FetchPropsInterface,
+  CategoryInterface,
+} from "../../utilities/interfaces";
 import useFetch from "../../utilities/useFetch";
 import Button from "../Button/Button";
 
@@ -6,21 +10,22 @@ function chichi() {
   console.log("hey");
 }
 
+const options: FetchPropsInterface = {
+  endPoint: "/categories",
+  fetchConfig: {
+    method: "GET",
+  },
+};
+
 const Form = () => {
-  const { data, isPending, error } = useFetch({
-    endPoint: "/categories",
-    fetchConfig: {
-      method: "GET",
-    },
-  });
+  const { data, isPending, error } = useFetch(options);
+  const [categories, setCategories] = useState<CategoryInterface[]>([]);
 
-  // const getCategories = () => {
-  //   const response = useFetch("/categories");
-  //   console.log(response);
-  // };
-
-  // useEffect(() => {
-  // }, []);
+  useEffect(() => {
+    if (data && !isPending) {
+      setCategories(data as CategoryInterface[]);
+    }
+  }, []);
 
   return (
     <form className="flex flex-col font-sans">
@@ -57,7 +62,16 @@ const Form = () => {
           className="h-10 w-full appearance-none bg-sb-grey-100 bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm italic text-sb-grey-400"
           required
         >
-          <option value="geen">Category</option>
+          <option value="geen">Geen categorie</option>
+          {categories.map((category, index) => (
+            <option
+              key={index}
+              id={category.id.toString()}
+              value={category.id.toString()}
+            >
+              {category.name}
+            </option>
+          ))}
         </select>
       </fieldset>
 

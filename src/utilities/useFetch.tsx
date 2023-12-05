@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
+import { FetchPropsInterface } from "./interfaces";
 
-interface fetchProps {
-  endPoint: string;
-  fetchConfig: {
-    method: string;
-    body?: string;
-  };
-}
-
-const useFetch = ({ endPoint, fetchConfig }: fetchProps) => {
+const useFetch = ({ endPoint, fetchConfig }: FetchPropsInterface) => {
   const baseURL: string = import.meta.env.VITE_API_BASE_URL;
   const APIValue: string = import.meta.env.VITE_API_KEY;
   const [URLEndPoint, setURLEndPoint] = useState(endPoint);
