@@ -7,9 +7,12 @@ function chichi() {
 }
 
 const Form = () => {
-  const { data, isPending, error } = useFetch("/categories");
-
-  console.log(data);
+  const { data, isPending, error } = useFetch({
+    endPoint: "/categories",
+    fetchConfig: {
+      method: "GET",
+    },
+  });
 
   // const getCategories = () => {
   //   const response = useFetch("/categories");
