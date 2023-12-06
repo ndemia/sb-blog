@@ -5,6 +5,7 @@ import {
 } from "../../utilities/interfaces";
 import useFetch from "../../utilities/useFetch";
 import Button from "../Button/Button";
+import Loader from "../Loader/Loader";
 
 function chichi() {
   console.log("hey");
@@ -18,103 +19,112 @@ const options: FetchPropsInterface = {
 };
 
 const Form = () => {
-  const { data, isPending, error } = useFetch(options);
+  const { data, isLoading, error } = useFetch(options);
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
+  console.log("categories", categories);
 
   useEffect(() => {
-    if (data && !isPending) {
+    console.log("render form", data, isLoading);
+    if (data) {
       setCategories(data as CategoryInterface[]);
     }
-  }, []);
+    console.log("categories", categories, isLoading);
+  }, [data]);
 
   return (
-    <form className="flex flex-col font-sans">
-      <h2 className="mb-10 font-sans text-2xl font-bold text-sb-black">
-        Post a blog post
-      </h2>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <form className="flex flex-col font-sans">
+          <h2 className="mb-10 font-sans text-2xl font-bold text-sb-black">
+            Post a blog post
+          </h2>
 
-      <fieldset className="mb-8">
-        <label
-          htmlFor="title"
-          className="mb-2 block text-sm font-bold text-sb-grey-800"
-        >
-          Title
-        </label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="No name"
-          className="h-10 w-full bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300"
-          required
-        ></input>
-      </fieldset>
-
-      <fieldset className="mb-8">
-        <label
-          htmlFor="category"
-          className="mb-2 block text-sm font-bold text-sb-grey-800"
-        >
-          Category
-        </label>
-        <select
-          id="category"
-          className="h-10 w-full appearance-none bg-sb-grey-100 bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm italic text-sb-grey-400"
-          required
-        >
-          <option value="geen">Geen categorie</option>
-          {categories.map((category, index) => (
-            <option
-              key={index}
-              id={category.id.toString()}
-              value={category.id.toString()}
+          <fieldset className="mb-8">
+            <label
+              htmlFor="title"
+              className="mb-2 block text-sm font-bold text-sb-grey-800"
             >
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </fieldset>
+              Title
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="No name"
+              className="h-10 w-full bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300"
+              required
+            ></input>
+          </fieldset>
 
-      <fieldset className="mb-8">
-        <label
-          htmlFor="image"
-          className="mb-2 block text-sm font-bold text-sb-grey-800"
-        >
-          Header image
-        </label>
-        <div className="relative">
-          <button className="absolute left-[42px] top-[7px] z-[1] cursor-pointer rounded-[20px] border-0 bg-sb-grey-500 px-4 py-1.5 text-[0.8rem] font-light text-sb-white hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900">
-            Choose file
-          </button>
-          <input
-            tabIndex={-1}
-            type="file"
-            id="image"
-            name="image"
-            className="no-repeat cursor-pointe relative h-10 w-36 bg-sb-grey-100 bg-[url('/assets/images/camera.svg')] bg-[size:16px] bg-[position:5%_center] bg-no-repeat text-sm italic text-sb-grey-300 text-transparent file:hidden"
-            accept="image/*"
-          ></input>
-          {}
-        </div>
-      </fieldset>
+          <fieldset className="mb-8">
+            <label
+              htmlFor="category"
+              className="mb-2 block text-sm font-bold text-sb-grey-800"
+            >
+              Category
+            </label>
+            <select
+              id="category"
+              className="h-10 w-full appearance-none bg-sb-grey-100 bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm italic text-sb-grey-400"
+              required
+            >
+              <option value="geen">Geen categorie</option>
+              {categories.map((category, index) => (
+                <option
+                  key={index}
+                  id={category.id.toString()}
+                  value={category.id.toString()}
+                >
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </fieldset>
 
-      <fieldset className="mb-8">
-        <label
-          htmlFor="text"
-          className="mb-2 block w-full text-sm font-bold text-sb-grey-800"
-        >
-          Text
-        </label>
-        <textarea
-          id="text"
-          name="text"
-          className="min-[heigth:175px] w-full bg-sb-grey-100 p-4 text-sm italic text-sb-grey-300"
-          required
-        ></textarea>
-      </fieldset>
+          <fieldset className="mb-8">
+            <label
+              htmlFor="image"
+              className="mb-2 block text-sm font-bold text-sb-grey-800"
+            >
+              Header image
+            </label>
+            <div className="relative">
+              <button className="absolute left-[42px] top-[7px] z-[1] cursor-pointer rounded-[20px] border-0 bg-sb-grey-500 px-4 py-1.5 text-[0.8rem] font-light text-sb-white hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900">
+                Choose file
+              </button>
+              <input
+                tabIndex={-1}
+                type="file"
+                id="image"
+                name="image"
+                className="no-repeat cursor-pointe relative h-10 w-36 bg-sb-grey-100 bg-[url('/assets/images/camera.svg')] bg-[size:16px] bg-[position:5%_center] bg-no-repeat text-sm italic text-sb-grey-300 text-transparent file:hidden"
+                accept="image/*"
+              ></input>
+              {}
+            </div>
+          </fieldset>
 
-      <Button text="Create blogpost" onClick={chichi}></Button>
-    </form>
+          <fieldset className="mb-8">
+            <label
+              htmlFor="text"
+              className="mb-2 block w-full text-sm font-bold text-sb-grey-800"
+            >
+              Text
+            </label>
+            <textarea
+              id="text"
+              name="text"
+              className="min-[heigth:175px] w-full bg-sb-grey-100 p-4 text-sm italic text-sb-grey-300"
+              required
+            ></textarea>
+          </fieldset>
+
+          <Button text="Create blogpost" onClick={chichi}></Button>
+        </form>
+      )}
+    </>
   );
 };
 

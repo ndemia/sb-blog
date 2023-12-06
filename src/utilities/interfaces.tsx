@@ -42,7 +42,7 @@ export interface BlogpostsResponseInterface {
 
 export interface FetchReturnInterface {
   data: CategoryInterface[] | BlogpostsResponseInterface[];
-  isPending: boolean;
+  isLoading: boolean;
   error: string | null;
 }
 
