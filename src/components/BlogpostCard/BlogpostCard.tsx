@@ -1,11 +1,7 @@
-import {
-  BlogpostInterface,
-  BlogpostCardProps,
-} from "./../../utilities/interfaces";
+import { BlogpostCardProps } from "./../../utilities/interfaces";
 
 const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
   const storageURL = import.meta.env.VITE_API_STORAGE_URL;
-  // const blogpost = props
 
   return (
     <article className="grow basis-[200px] overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
