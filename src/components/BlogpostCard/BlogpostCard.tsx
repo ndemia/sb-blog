@@ -2,6 +2,17 @@ import { BlogpostCardProps } from "./../../utilities/interfaces";
 
 const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
   const storageURL = import.meta.env.VITE_API_STORAGE_URL;
+  let blogpostDate = new Date(blogpostData.created_at);
+
+  const generateReadableDate = () => {
+    let readableDate = blogpostDate
+      .toISOString()
+      .slice(0, 10)
+      .split("-")
+      .reverse()
+      .join("-");
+    return readableDate;
+  };
 
   return (
     <article className="overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
@@ -13,7 +24,7 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
         ></img>
         <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between px-4 pb-2">
           <span className="text-[0.5rem] italic text-sb-white">
-            {blogpostData.created_at}
+            {generateReadableDate()}
           </span>
           <span className="text-[0.5rem] italic text-sb-white">
             {blogpostData.category.name}
