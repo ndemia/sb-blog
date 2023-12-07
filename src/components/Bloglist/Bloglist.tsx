@@ -13,7 +13,6 @@ const options: FetchPropsInterface = {
     method: "GET",
   },
 };
-
 const Bloglist = () => {
   const { data, isLoading, error } = useFetch(options);
   const [blogposts, setBlogposts] = useState<BlogpostInterface[]>([]);
@@ -32,13 +31,15 @@ const Bloglist = () => {
       ) : isLoading ? (
         <Loader />
       ) : (
-        <ul className="flex flex-row flex-wrap justify-evenly gap-6">
-          {blogposts.map((blogpost, index) => (
-            <li key={index} className="grow basis-[200px]">
-              <BlogpostCard blogpostData={blogpost} />
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col">
+          <ul className="mb-8 flex flex-row flex-wrap justify-evenly gap-6">
+            {blogposts.map((blogpost, index) => (
+              <li key={index} className="grow basis-[200px]">
+                <BlogpostCard blogpostData={blogpost} />
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </>
   );

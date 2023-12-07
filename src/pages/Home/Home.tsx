@@ -1,5 +1,10 @@
 import Form from "../../components/Form/Form";
 import Bloglist from "../../components/Bloglist/Bloglist";
+import Button from "../../components/Button/Button";
+
+function chichi() {
+  console.log("hey");
+}
 
 const Home = () => {
   return (
@@ -9,6 +14,7 @@ const Home = () => {
       </section>
       <section className="sb-md:col-start-2 sb-md:row-auto col-auto row-start-1 bg-sb-white p-8">
         <Bloglist />
+        <Button text="Load more" onClick={chichi}></Button>
       </section>
     </main>
   );
