@@ -17,6 +17,7 @@ const options: FetchPropsInterface = {
 const Bloglist = () => {
   const { data, isLoading, error } = useFetch(options);
   const [blogposts, setBlogposts] = useState<BlogpostInterface[]>([]);
+  const errorMessage = `The latest blogposts should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
 
   useEffect(() => {
     if (data && "data" in data) {
@@ -26,7 +27,9 @@ const Bloglist = () => {
 
   return (
     <>
-      {isLoading ? (
+      {error ? (
+        <p>{errorMessage}</p>
+      ) : isLoading ? (
         <Loader />
       ) : (
         <ul className="flex flex-row flex-wrap justify-evenly gap-6">

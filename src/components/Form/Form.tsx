@@ -21,19 +21,19 @@ const options: FetchPropsInterface = {
 const Form = () => {
   const { data, isLoading, error } = useFetch(options);
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
-  console.log("categories", categories);
+  const errorMessage = `A form should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
 
   useEffect(() => {
-    console.log("render form", data, isLoading);
     if (data) {
       setCategories(data as CategoryInterface[]);
     }
-    console.log("categories", categories, isLoading);
   }, [data]);
 
   return (
     <>
-      {isLoading ? (
+      {error ? (
+        <p>{errorMessage}</p>
+      ) : isLoading ? (
         <Loader />
       ) : (
         <form className="flex flex-col font-sans">

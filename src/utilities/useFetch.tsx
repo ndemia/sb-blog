@@ -12,12 +12,11 @@ const useFetch = ({
 }: FetchPropsInterface): FetchReturnInterface => {
   const baseURL: string = import.meta.env.VITE_API_BASE_URL;
   const APIValue: string = import.meta.env.VITE_API_KEY;
-  const [URLEndPoint, setURLEndPoint] = useState(endPoint);
   const [data, setData] = useState<
     BlogpostsResponseInterface[] | CategoryInterface[]
   >([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<null | string>(null);
+  const [error, setError] = useState<string | null>(null);
   const fetchOptions = {
     ...fetchConfig,
     headers: {
@@ -28,7 +27,12 @@ const useFetch = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${baseURL}${URLEndPoint}`, fetchOptions);
+        const response = await fetch(`${baseURL}${endPoint}`, fetchOptions);
+        if (!response.ok) {
+          throw new Error(
+            "We could not get some of the data we need from the API",
+          );
+        }
         const data = await response.json();
 
         if ("data" in data) {
@@ -46,6 +50,7 @@ const useFetch = ({
         }
       }
     };
+
     fetchData();
   }, []);
 
