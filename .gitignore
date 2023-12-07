@@ -12,6 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
+original_material
 
 # Editor directories and files
 .vscode/*
