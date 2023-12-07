@@ -25,6 +25,9 @@ export default {
       brightness: {
         70: ".7",
       },
+      screens: {
+        "sb-md": "59.375em",
+      },
     },
   },
   plugins: [],
