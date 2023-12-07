@@ -12,19 +12,21 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
           alt=""
         ></img>
         <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between px-4 pb-2">
-          <span className="text-[0.5rem] text-sb-white">
+          <span className="text-[0.5rem] italic text-sb-white">
             {blogpostData.created_at}
           </span>
-          <span className="text-[0.5rem] text-sb-white">
+          <span className="text-[0.5rem] italic text-sb-white">
             {blogpostData.category.name}
           </span>
         </div>
       </header>
-      <div className="px-4 pb-4 pt-2">
-        <h3 className="mb-2 text-2xl font-bold text-sb-black">
+      <div className="px-4 py-5">
+        <h3 className="mb-2 break-normal text-2xl font-bold text-sb-black">
           {blogpostData.title}
         </h3>
-        <p className="text-xs text-sb-grey-400">{blogpostData.content}</p>
+        <p className="break-normal text-xs leading-5 text-sb-grey-400">
+          {blogpostData.content}
+        </p>
       </div>
     </article>
   );
