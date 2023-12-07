@@ -7,7 +7,7 @@ const Home = () => {
       <section className="row-start-2 bg-sb-white p-8 md:row-start-1">
         <Form />
       </section>
-      <section className="row-start-1 bg-sb-white p-8 md:row-span-2">
+      <section className="row-start-1 bg-sb-white p-8 md:row-start-2">
         <Bloglist />
       </section>
     </main>
