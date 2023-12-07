@@ -34,7 +34,7 @@ const Bloglist = () => {
       ) : (
         <ul className="flex flex-row flex-wrap justify-evenly gap-6">
           {blogposts.map((blogpost, index) => (
-            <li key={index}>
+            <li key={index} className="grow basis-[200px]">
               <BlogpostCard blogpostData={blogpost} />
             </li>
           ))}

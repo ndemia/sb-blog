@@ -3,11 +3,11 @@ import Bloglist from "../../components/Bloglist/Bloglist";
 
 const Home = () => {
   return (
-    <main className="flex justify-center gap-x-6 bg-sb-grey-100 p-10">
-      <section className="w-2/4 bg-sb-white p-8">
+    <main className="grid grid-cols-1 grid-rows-2 justify-center justify-items-stretch gap-y-6 bg-sb-grey-100 p-10 md:grid-cols-[minmax(min-content,_500px)_minmax(350px,_550px)] md:gap-x-6">
+      <section className="row-start-2 bg-sb-white p-8 md:row-start-1">
         <Form />
       </section>
-      <section className="w-2/4 bg-sb-white p-8">
+      <section className="row-start-1 bg-sb-white p-8 md:row-span-2">
         <Bloglist />
       </section>
     </main>

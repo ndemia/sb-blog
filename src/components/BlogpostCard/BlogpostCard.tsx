@@ -4,7 +4,7 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
   const storageURL = import.meta.env.VITE_API_STORAGE_URL;
 
   return (
-    <article className="grow basis-[200px] overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
+    <article className="overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
       <header className="relative">
         <img
           className="max-h-16 w-full"
