@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import useFetch from "../../utilities/useFetch";
 import BlogpostCard from "../BlogpostCard/BlogpostCard";
 import Loader from "../Loader/Loader";
+import Button from "../Button/Button";
 import {
   FetchPropsInterface,
   BlogpostInterface,
@@ -13,6 +14,11 @@ const options: FetchPropsInterface = {
     method: "GET",
   },
 };
+
+function chichi() {
+  console.log("hey");
+}
+
 const Bloglist = () => {
   const { data, isLoading, error } = useFetch(options);
   const [blogposts, setBlogposts] = useState<BlogpostInterface[]>([]);
@@ -39,6 +45,7 @@ const Bloglist = () => {
               </li>
             ))}
           </ul>
+          <Button text="Load more" onClick={chichi}></Button>
         </div>
       )}
     </>
