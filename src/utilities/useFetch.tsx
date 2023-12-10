@@ -6,10 +6,7 @@ import {
   FetchReturnInterface,
 } from "./interfaces";
 
-const useFetch = ({
-  endPoint,
-  fetchConfig,
-}: FetchPropsInterface): FetchReturnInterface => {
+const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
   const baseURL: string = import.meta.env.VITE_API_BASE_URL;
   const APIValue: string = import.meta.env.VITE_API_KEY;
   const [data, setData] = useState<
@@ -17,17 +14,24 @@ const useFetch = ({
   >([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const fetchOptions = {
-    ...fetchConfig,
-    headers: {
-      token: APIValue,
-    },
-  };
+  const [consolidatedFetchOptions, setConsolidatedFetchOptions] =
+    useState<FetchPropsInterface>({
+      ...fetchOptions,
+      requestConfig: {
+        ...fetchOptions.requestConfig,
+        headers: {
+          token: APIValue,
+        },
+      },
+    });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${baseURL}${endPoint}`, fetchOptions);
+        const response = await fetch(
+          `${baseURL}${consolidatedFetchOptions.endPoint}`,
+          consolidatedFetchOptions.requestConfig,
+        );
         if (!response.ok) {
           throw new Error(
             "We could not get some of the data we need from the API",
@@ -52,9 +56,22 @@ const useFetch = ({
     };
 
     fetchData();
-  }, []);
+  }, [consolidatedFetchOptions]);
 
-  return { data, isLoading, error };
+  const updateFetchOptions = (newOptions: FetchPropsInterface) => {
+    const newConsolidatedFetchOptions = {
+      ...newOptions,
+      requestConfig: {
+        ...newOptions.requestConfig,
+        headers: {
+          token: APIValue,
+        },
+      },
+    };
+    setConsolidatedFetchOptions(newConsolidatedFetchOptions);
+  };
+
+  return { data, isLoading, error, updateFetchOptions };
 };
 
 export default useFetch;

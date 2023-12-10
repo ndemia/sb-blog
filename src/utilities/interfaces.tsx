@@ -1,8 +1,11 @@
 export interface FetchPropsInterface {
   endPoint: string;
-  fetchConfig: {
+  requestConfig: {
     method: string;
     body?: string;
+    headers?: {
+      token: string;
+    };
   };
 }
 
@@ -44,6 +47,7 @@ export interface FetchReturnInterface {
   data: CategoryInterface[] | BlogpostsResponseInterface[];
   isLoading: boolean;
   error: string | null;
+  updateFetchOptions: (newOptions: FetchPropsInterface) => void;
 }
 
 export interface BlogpostCardProps {

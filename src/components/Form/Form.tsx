@@ -11,15 +11,15 @@ function chichi() {
   console.log("hey");
 }
 
-const options: FetchPropsInterface = {
+const fetchOptions: FetchPropsInterface = {
   endPoint: "/categories",
-  fetchConfig: {
+  requestConfig: {
     method: "GET",
   },
 };
 
 const Form = () => {
-  const { data, isLoading, error } = useFetch(options);
+  const { data, isLoading, error } = useFetch(fetchOptions);
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
   const errorMessage = `A form should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
 
