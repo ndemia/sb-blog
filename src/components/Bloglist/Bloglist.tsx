@@ -6,11 +6,16 @@ import Button from "../Button/Button";
 import {
   FetchPropsInterface,
   BlogpostInterface,
+  BloglistPropsInterface,
 } from "../../utilities/interfaces";
 
-const Bloglist = () => {
+const Bloglist = ({
+  postsPerPage,
+  showLoadMoreButton,
+}: BloglistPropsInterface) => {
   const fetchOptions: FetchPropsInterface = {
-    endPoint: "/posts?perPage=4&page=1",
+    endPoint: `/posts?perPage=${postsPerPage}`,
+    postsPerPage: postsPerPage,
     requestConfig: {
       method: "GET",
     },
@@ -31,7 +36,12 @@ const Bloglist = () => {
   };
 
   const scrollIntoView = () => {
-    if (blogposts.length > 4 && blogpostsContainer.current !== null) {
+    // Checks that this function only runs in the Homepage
+    if (
+      blogposts.length > 4 &&
+      blogpostsContainer.current !== null &&
+      showLoadMoreButton === true
+    ) {
       blogpostsContainer.current.lastElementChild?.scrollIntoView({
         inline: "end",
         behavior: "smooth",
@@ -72,7 +82,9 @@ const Bloglist = () => {
               ))}
             </ul>
           </div>
-          <Button text="Load more" onClick={fetchMoreBlogposts}></Button>
+          {showLoadMoreButton && (
+            <Button text="Load more" onClick={fetchMoreBlogposts} />
+          )}
         </>
       )}
     </>

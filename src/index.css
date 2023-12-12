@@ -37,5 +37,6 @@
 
   html {
     font-family: "Figtree", "Montserrat", sans-serif;
+    background-color: hsl(0, 0%, 96%);
   }
 }

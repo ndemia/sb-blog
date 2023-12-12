@@ -1,6 +1,6 @@
-import { BlogpostCardProps } from "./../../utilities/interfaces";
+import { BlogpostCardPropsInterface } from "./../../utilities/interfaces";
 
-const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
+const BlogpostCard = ({ blogpostData }: BlogpostCardPropsInterface) => {
   const storageURL = import.meta.env.VITE_API_STORAGE_URL;
   let blogpostDate = new Date(blogpostData.created_at);
 
@@ -15,7 +15,7 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardProps) => {
   };
 
   return (
-    <article className="overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
+    <article className="min-h-[260px] overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
       <header className="relative">
         <img
           className="max-h-16 w-full"

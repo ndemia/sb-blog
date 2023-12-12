@@ -1,5 +1,6 @@
 export interface FetchPropsInterface {
   endPoint: string;
+  postsPerPage?: number;
   requestConfig: {
     method: string;
     body?: string;
@@ -50,6 +51,11 @@ export interface FetchReturnInterface {
   updateFetchOptions: (newOptions: FetchPropsInterface) => void;
 }
 
-export interface BlogpostCardProps {
+export interface BlogpostCardPropsInterface {
   blogpostData: BlogpostInterface;
+}
+
+export interface BloglistPropsInterface {
+  postsPerPage: number;
+  showLoadMoreButton: boolean;
 }
