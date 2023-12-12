@@ -4,7 +4,7 @@ const Navigation = () => {
   return (
     <nav className="flex w-full flex-row items-center justify-between px-8">
       <Link to="/">
-        <img src="assets/logos/logo192.png" alt="" width="75px" />
+        <img src="assets/logos/logo192.png" alt="" width="50px" />
       </Link>
       <div>
         <Link to="/" className="mx-4 text-lg font-bold text-white no-underline">
