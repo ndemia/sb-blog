@@ -12,6 +12,7 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
   const [data, setData] = useState<
     BlogpostsResponseInterface[] | CategoryInterface[]
   >([]);
+  const [lastPage, setLastPage] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [consolidatedFetchOptions, setConsolidatedFetchOptions] =
@@ -45,6 +46,7 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
           setData(data as CategoryInterface[]);
         }
 
+        setLastPage(data.last_page);
         setIsLoading(false);
         setError(null);
       } catch (error) {
@@ -71,7 +73,7 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
     setConsolidatedFetchOptions(newConsolidatedFetchOptions);
   };
 
-  return { data, isLoading, error, updateFetchOptions };
+  return { data, isLoading, error, updateFetchOptions, lastPage };
 };
 
 export default useFetch;

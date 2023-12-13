@@ -48,6 +48,7 @@ export interface FetchReturnInterface {
   data: CategoryInterface[] | BlogpostsResponseInterface[];
   isLoading: boolean;
   error: string | null;
+  lastPage: number | null;
   updateFetchOptions: (newOptions: FetchPropsInterface) => void;
 }
 

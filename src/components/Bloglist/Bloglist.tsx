@@ -3,6 +3,7 @@ import useFetch from "../../utilities/useFetch";
 import BlogpostCard from "../BlogpostCard/BlogpostCard";
 import Loader from "../Loader/Loader";
 import Button from "../Button/Button";
+import Pagination from "../Pagination/Pagination";
 import {
   FetchPropsInterface,
   BlogpostInterface,
@@ -20,7 +21,8 @@ const Bloglist = ({
       method: "GET",
     },
   };
-  const { data, isLoading, error, updateFetchOptions } = useFetch(fetchOptions);
+  const { data, isLoading, error, updateFetchOptions, lastPage } =
+    useFetch(fetchOptions);
   const [blogposts, setBlogposts] = useState<BlogpostInterface[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const blogpostsContainer = useRef<HTMLUListElement | null>(null);
@@ -36,7 +38,7 @@ const Bloglist = ({
   };
 
   const scrollIntoView = () => {
-    // Checks that this function only runs in the Homepage
+    // Checks that this function only runs in the Homepage, so that the scrolling only happens there
     if (
       blogposts.length > 4 &&
       blogpostsContainer.current !== null &&
@@ -84,6 +86,9 @@ const Bloglist = ({
           </div>
           {showLoadMoreButton && (
             <Button text="Load more" onClick={fetchMoreBlogposts} />
+          )}
+          {lastPage !== null && (
+            <Pagination currentPage={currentPage} lastPage={lastPage} />
           )}
         </>
       )}
