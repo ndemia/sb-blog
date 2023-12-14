@@ -84,11 +84,13 @@ const Bloglist = ({
               ))}
             </ul>
           </div>
-          {showLoadMoreButton && (
+          {showLoadMoreButton ? (
             <Button text="Load more" onClick={fetchMoreBlogposts} />
-          )}
-          {lastPage !== null && (
-            <Pagination currentPage={currentPage} lastPage={lastPage} />
+          ) : (
+            <Pagination
+              currentPage={currentPage}
+              lastPage={lastPage as number}
+            />
           )}
         </>
       )}
