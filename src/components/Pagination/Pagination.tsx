@@ -62,10 +62,29 @@ const Pagination = ({
   const blogPagination = createPagination(currentPage, lastPage);
 
   return (
-    <div>
+    <div className="mt-8 flex flex-row justify-center">
       {blogPagination.map((pageElement, index) => (
-        <button key={index}>{pageElement}</button>
+        <button
+          key={index}
+          className={`mr-2 rounded-xl px-3 py-1 text-sb-grey-700 transition-all hover:bg-sb-grey-200 hover:text-sb-grey-700 ${
+            pageElement === currentPage
+              ? "bg-sb-grey-100 font-bold text-sb-grey-900"
+              : ""
+          }`}
+        >
+          {pageElement}
+        </button>
       ))}
+      <button className="text-sb-primary-100 transition-all hover:text-sb-primary-200">
+        Next page
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          className="ml-1 inline-block w-[1rem] fill-sb-primary-100"
+        >
+          <path d="M17.086,11L3,11L3,13L17.086,13L14.086,16L15.5,17.414L20.914,12L15.5,6.586L14.086,8L17.086,11Z" />
+        </svg>
+      </button>
     </div>
   );
 };
