@@ -3,10 +3,10 @@ export interface FetchPropsInterface {
   postsPerPage?: number;
   requestConfig: {
     method: string;
-    body?: string;
     headers?: {
       token: string;
     };
+    body?: FormData;
   };
 }
 
@@ -50,6 +50,7 @@ export interface FetchReturnInterface {
   error: string | null;
   lastPage: number | null;
   updateFetchOptions: (newOptions: FetchPropsInterface) => void;
+  wasPostSuccessful: boolean;
 }
 
 export interface BlogpostCardPropsInterface {

@@ -15,14 +15,15 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
   const [lastPage, setLastPage] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [wasPostSuccessful, setWasPostSuccessful] = useState<boolean>(false);
   const [consolidatedFetchOptions, setConsolidatedFetchOptions] =
     useState<FetchPropsInterface>({
       ...fetchOptions,
       requestConfig: {
-        ...fetchOptions.requestConfig,
         headers: {
           token: APIValue,
         },
+        ...fetchOptions.requestConfig,
       },
     });
 
@@ -33,6 +34,7 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
           `${baseURL}${consolidatedFetchOptions.endPoint}`,
           consolidatedFetchOptions.requestConfig,
         );
+
         if (!response.ok) {
           throw new Error(
             "We could not get some of the data we need from the API",
@@ -41,12 +43,17 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
         const data = await response.json();
 
         if ("data" in data) {
+          // If the property data is present, it means it's the full response
           setData(data as BlogpostsResponseInterface[]);
-        } else {
+          setLastPage(data.last_page);
+        } else if (data.length > 0) {
+          // It's the array that contains the categories
           setData(data as CategoryInterface[]);
+        } else {
+          // It's the response of a successful POST request (which is the submitted object)
+          setWasPostSuccessful(true);
         }
 
-        setLastPage(data.last_page);
         setIsLoading(false);
         setError(null);
       } catch (error) {
@@ -64,16 +71,24 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
     const newConsolidatedFetchOptions = {
       ...newOptions,
       requestConfig: {
-        ...newOptions.requestConfig,
         headers: {
           token: APIValue,
         },
+        ...newOptions.requestConfig,
       },
     };
+
     setConsolidatedFetchOptions(newConsolidatedFetchOptions);
   };
 
-  return { data, isLoading, error, updateFetchOptions, lastPage };
+  return {
+    data,
+    isLoading,
+    error,
+    updateFetchOptions,
+    lastPage,
+    wasPostSuccessful,
+  };
 };
 
 export default useFetch;
