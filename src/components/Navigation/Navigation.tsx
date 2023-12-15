@@ -1,21 +1,30 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
     <nav className="flex w-full flex-row items-center justify-between px-8">
-      <Link to="/">
+      <NavLink to="/">
         <img src="assets/logos/logo192.png" alt="" width="50px" />
-      </Link>
+      </NavLink>
       <div>
-        <Link to="/" className="mx-4 text-lg font-bold text-white no-underline">
+        <NavLink
+          to="/"
+          className="mx-4 text-lg font-bold text-white no-underline"
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "2px solid hsl(24, 89%, 54%)" : "",
+          })}
+        >
           Home
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/blog"
           className="mx-4 text-lg font-bold text-white no-underline"
+          style={({ isActive }) => ({
+            borderBottom: isActive ? "2px solid hsl(24, 89%, 54%)" : "",
+          })}
         >
           Blog
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );
