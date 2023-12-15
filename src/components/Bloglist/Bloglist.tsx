@@ -28,13 +28,15 @@ const Bloglist = ({
   const blogpostsContainer = useRef<HTMLUListElement | null>(null);
   const errorMessage = `The latest blogposts should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
 
-  const fetchMoreBlogposts = () => {
+  // Posts per page is defined according to the page in which Bloglist is placed
+  const fetchMoreBlogposts = (pageNumber: number) => {
     const newOptions = {
       ...fetchOptions,
-      endPoint: `/posts?perPage=4&page=${currentPage + 1}`,
+      endPoint: `/posts?perPage=${postsPerPage}&page=${pageNumber}`,
     };
+
     updateFetchOptions(newOptions);
-    setCurrentPage(currentPage + 1);
+    setCurrentPage(pageNumber);
   };
 
   const scrollIntoView = () => {
@@ -52,11 +54,13 @@ const Bloglist = ({
   };
 
   useEffect(() => {
+    // Type narrowing by checking the existence of the data property, which is an array with the blogposts themselves
     if (data && "data" in data) {
-      setBlogposts((prevData) => [
-        ...prevData,
-        ...(data.data as BlogpostInterface[]),
-      ]);
+      const blogposts = data.data as BlogpostInterface[];
+      // If lenght is less than 8, it means it's for the Home page, so we append. Otherwise, it's for the Blog page so we replace
+      blogposts.length < 8
+        ? setBlogposts((prevData) => [...prevData, ...blogposts])
+        : setBlogposts(blogposts);
     }
   }, [data]);
 
@@ -85,11 +89,15 @@ const Bloglist = ({
             </ul>
           </div>
           {showLoadMoreButton ? (
-            <Button text="Load more" onClick={fetchMoreBlogposts} />
+            <Button
+              text="Load more"
+              onClick={() => fetchMoreBlogposts(currentPage + 1)}
+            />
           ) : (
             <Pagination
               currentPage={currentPage}
               lastPage={lastPage as number}
+              fetchMoreBlogposts={fetchMoreBlogposts}
             />
           )}
         </>
