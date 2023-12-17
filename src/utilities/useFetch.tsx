@@ -40,17 +40,19 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
             "We could not get some of the data we need from the API",
           );
         }
+
         const data = await response.json();
 
+        // Handle different scenarios based on the type of request
         if ("data" in data) {
-          // If the property data is present, it means it's the full response
+          // Handle successful GET for data
           setData(data as BlogpostsResponseInterface[]);
           setLastPage(data.last_page);
         } else if (data.length > 0) {
-          // It's the array that contains the categories
+          // Handle successful GET for categories
           setData(data as CategoryInterface[]);
         } else {
-          // It's the response of a successful POST request (which is the submitted object)
+          // Handle successful POST
           setWasPostSuccessful(true);
         }
 
