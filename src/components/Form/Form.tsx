@@ -36,14 +36,16 @@ const Form = () => {
     blogpostData.append("image", selectedImage!, selectedImage!.name);
 
     updateFetchOptions({
-      endPoint: "/postsss",
+      endPoint: "/posts",
       requestConfig: {
         method: "POST",
         body: blogpostData,
       },
     });
 
-    formRef.current!.reset();
+    console.log("success");
+
+    // formRef.current!.reset();
   };
 
   useEffect(() => {
@@ -52,11 +54,11 @@ const Form = () => {
     }
   }, [data]);
 
-  // useEffect(() => {
-  //   if (form && wasPostSuccessful) {
-  //     form.reset();
-  //   }
-  // }, [wasPostSuccessful]);
+  useEffect(() => {
+    if (wasPostSuccessful && formRef.current != null) {
+      formRef.current.reset();
+    }
+  }, [wasPostSuccessful]);
 
   return (
     <>
@@ -130,7 +132,10 @@ const Form = () => {
             <div className="relative">
               <button
                 className="absolute left-[48px] top-[10px] z-[1] cursor-pointer rounded-[20px] border-0 bg-sb-grey-500 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900"
-                onClick={() => browseFileButton.current?.click()}
+                onClick={(event) => {
+                  event.preventDefault();
+                  browseFileButton.current?.click();
+                }}
               >
                 Kies bestand
               </button>
