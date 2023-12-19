@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
 
 const Form = () => {
-  let fetchOptions: FetchPropsInterface = {
+  const fetchOptions: FetchPropsInterface = {
     endPoint: "/categories",
     requestConfig: {
       method: "GET",
@@ -42,10 +42,6 @@ const Form = () => {
         body: blogpostData,
       },
     });
-
-    console.log("success");
-
-    // formRef.current!.reset();
   };
 
   useEffect(() => {
@@ -54,16 +50,12 @@ const Form = () => {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (wasPostSuccessful && formRef.current != null) {
-      formRef.current.reset();
-    }
-  }, [wasPostSuccessful]);
-
   return (
     <>
       {error ? (
         <p>{errorMessage}</p>
+      ) : wasPostSuccessful ? (
+        <p>Post successful!</p>
       ) : isLoading ? (
         <Loader />
       ) : (

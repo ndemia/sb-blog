@@ -30,6 +30,8 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+
         const response = await fetch(
           `${baseURL}${consolidatedFetchOptions.endPoint}`,
           consolidatedFetchOptions.requestConfig,
@@ -55,14 +57,12 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
           // Handle successful POST
           setWasPostSuccessful(true);
         }
-
-        setIsLoading(false);
-        setError(null);
       } catch (error) {
         if (error instanceof Error) {
           setError(error.message);
-          setIsLoading(false);
         }
+      } finally {
+        setIsLoading(false);
       }
     };
 
