@@ -61,3 +61,10 @@ export interface BloglistPropsInterface {
   postsPerPage: number;
   showLoadMoreButton: boolean;
 }
+
+export interface FormContentInterface {
+  title: string;
+  category_id: string;
+  image: File | null;
+  content: string;
+}

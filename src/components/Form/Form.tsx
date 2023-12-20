@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, FormEvent } from "react";
 import {
   FetchPropsInterface,
   CategoryInterface,
+  FormContentInterface,
 } from "../../utilities/interfaces";
 import useFetch from "../../utilities/useFetch";
 import Button from "../Button/Button";
@@ -14,26 +15,27 @@ const Form = () => {
       method: "GET",
     },
   };
-  // The data retrieved in this case, are the categories.
   const { data, isLoading, error, updateFetchOptions, wasPostSuccessful } =
     useFetch(fetchOptions);
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
-  const [title, setTitle] = useState<string>("");
-  const [categoryID, setCategoryID] = useState<string>("");
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [content, setContent] = useState<string>("");
   const formRef = useRef<HTMLFormElement | null>(null);
   const browseFileButton = useRef<HTMLInputElement | null>(null);
   const errorMessage = `A form should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
+  const [formContent, setFormContent] = useState<FormContentInterface>({
+    title: "",
+    category_id: "",
+    image: null,
+    content: "",
+  });
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
     const blogpostData = new FormData();
-    blogpostData.append("title", title);
-    blogpostData.append("content", content);
-    blogpostData.append("category_id", categoryID);
-    blogpostData.append("image", selectedImage!, selectedImage!.name);
+
+    for (const [key, value] of Object.entries(formContent)) {
+      blogpostData.append(key, value);
+    }
 
     updateFetchOptions({
       endPoint: "/posts",
@@ -82,7 +84,7 @@ const Form = () => {
               placeholder="Geen titel"
               className="h-10 w-full bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300 transition-all"
               onChange={(event) => {
-                setTitle(event.target.value);
+                setFormContent({ ...formContent, title: event.target.value });
               }}
               required
             ></input>
@@ -98,7 +100,12 @@ const Form = () => {
             <select
               id="categorie"
               className="h-10 w-full appearance-none bg-sb-grey-100 bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm italic text-sb-grey-400 transition-all"
-              onChange={(event) => setCategoryID(event.target.value)}
+              onChange={(event) =>
+                setFormContent({
+                  ...formContent,
+                  category_id: event.target.value,
+                })
+              }
               required
             >
               <option value="geen">Geen categorie</option>
@@ -140,14 +147,17 @@ const Form = () => {
                 accept="image/*"
                 ref={browseFileButton}
                 onChange={(event) =>
-                  !event.target.files || event.target.files.length === 0
-                    ? setSelectedImage(null)
-                    : setSelectedImage(event.target.files[0])
+                  !event.target.files
+                    ? setFormContent({ ...formContent, image: null })
+                    : setFormContent({
+                        ...formContent,
+                        image: event.target.files[0],
+                      })
                 }
               ></input>
-              {selectedImage && (
+              {formContent.image && (
                 <span className="ml-2 mt-2 block text-xs text-sb-grey-500">
-                  {selectedImage.name}
+                  {formContent.image.name}
                 </span>
               )}
             </div>
@@ -164,7 +174,9 @@ const Form = () => {
               id="bericht"
               name="bericht"
               className="min-h-[200px] w-full bg-sb-grey-100 p-4 text-sm text-sb-grey-300 transition-all"
-              onChange={(event) => setContent(event.target.value)}
+              onChange={(event) =>
+                setFormContent({ ...formContent, content: event.target.value })
+              }
               required
             ></textarea>
           </fieldset>
