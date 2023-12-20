@@ -84,7 +84,10 @@ const Form = () => {
               placeholder="Geen titel"
               className="h-10 w-full bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300 transition-all"
               onChange={(event) => {
-                setFormContent({ ...formContent, title: event.target.value });
+                setFormContent({
+                  ...formContent,
+                  title: event.target.value.trim(),
+                });
               }}
               required
             ></input>
@@ -175,7 +178,10 @@ const Form = () => {
               name="bericht"
               className="min-h-[200px] w-full bg-sb-grey-100 p-4 text-sm text-sb-grey-300 transition-all"
               onChange={(event) =>
-                setFormContent({ ...formContent, content: event.target.value })
+                setFormContent({
+                  ...formContent,
+                  content: event.target.value.trim(),
+                })
               }
               required
             ></textarea>
