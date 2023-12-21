@@ -9,6 +9,8 @@ export default {
       colors: {
         "sb-white": "hsl(0, 0%, 100%)",
         "sb-black": "hsl(0, 0%, 15%)",
+        "sb-red": "hsl(0, 90%, 50%)",
+        "sb-green": "hsl(127, 90%, 50%)",
         "sb-grey-100": "hsl(0, 0%, 96%)",
         "sb-grey-200": "hsl(0, 0%, 91%)",
         "sb-grey-300": "hsl(0, 0%, 77%)",

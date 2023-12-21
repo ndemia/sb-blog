@@ -68,3 +68,10 @@ export interface FormContentInterface {
   image: File | null;
   content: string;
 }
+
+export interface ErrorsInterface {
+  title: string;
+  category_id: string;
+  image: string;
+  content: string;
+}
