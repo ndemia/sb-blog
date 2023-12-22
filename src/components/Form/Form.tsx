@@ -43,36 +43,45 @@ const Form = () => {
   ) => {
     const { name, value } = event.target;
 
+    // Clear errors when the input is being edited
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
+
     // Set the input's content
     setFormContent({
       ...formContent,
       [name]: value.trim(),
     });
 
-    // File upload input has no useful value, so we check for files
+    // We identify for the files attribute to know we are dealing the image upload input
     if ("files" in event.target && event.target.files !== null) {
       let fileList = event.target.files as FileList;
       const maxFileSizeInBytes = 3 * 1024 * 1024;
 
       if (fileList[0].size > maxFileSizeInBytes) {
+        // Remove file from input, otherwise it's not enough to just remove it from the files attribute for it to be empty
+        event.target.value = "";
+
+        setFormContent({
+          ...formContent,
+          image: null,
+        });
+
         setErrors({
           ...errors,
           image: "Selecteer een bestand onder de 3MB.",
         });
+
         return;
+      } else {
+        setFormContent({
+          ...formContent,
+          [name]: fileList[0],
+        });
       }
-
-      setFormContent({
-        ...formContent,
-        [name]: fileList[0],
-      });
     }
-
-    // Clear errors when the input is being edited
-    setErrors({
-      ...errors,
-      [name]: "",
-    });
   };
 
   const handleSubmit = (event: FormEvent) => {
@@ -85,6 +94,9 @@ const Form = () => {
     const emptyInputs = Object.keys(formContent).filter(
       (input) => !formContent[input as keyof typeof formContent],
     );
+
+    console.log(formContent);
+    console.log(emptyInputs);
 
     // If there is any empty input at all
     if (emptyInputs.length > 0) {
