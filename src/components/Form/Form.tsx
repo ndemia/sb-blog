@@ -95,9 +95,6 @@ const Form = () => {
       (input) => !formContent[input as keyof typeof formContent],
     );
 
-    console.log(formContent.image);
-    console.log(emptyInputs);
-
     // If there is any empty input at all
     if (emptyInputs.length > 0) {
       const errorMessages: ErrorsInterface = {
