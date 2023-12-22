@@ -1,8 +1,17 @@
 import Bloglist from "../../components/Bloglist/Bloglist";
+import { useEffect } from "react";
 
 const Blog = () => {
   const postPerPage = 8;
   const showLoadMoreButton = false;
+
+  useEffect(() => {
+    document.title = "Blog";
+
+    return () => {
+      document.title = "Home";
+    };
+  }, []);
 
   return (
     <main className="bg-sb-grey-100 p-10">
