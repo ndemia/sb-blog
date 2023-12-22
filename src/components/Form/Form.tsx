@@ -52,13 +52,21 @@ const Form = () => {
     // File upload input has no useful value, so we check for files
     if ("files" in event.target && event.target.files !== null) {
       let fileList = event.target.files as FileList;
+      const maxFileSizeInBytes = 3 * 1024 * 1024;
+
+      if (fileList[0].size > maxFileSizeInBytes) {
+        setErrors({
+          ...errors,
+          image: "Selecteer een bestand onder de 3MB.",
+        });
+        return;
+      }
+
       setFormContent({
         ...formContent,
         [name]: fileList[0],
       });
     }
-
-    console.log(formContent);
 
     // Clear errors when the input is being edited
     setErrors({
@@ -149,7 +157,7 @@ const Form = () => {
               Berichtnaam
             </label>
             {errors.title && (
-              <span className="text-sb-red mb-2 ml-4 inline-block text-xs font-bold tracking-wider">
+              <span className="mb-2 ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -178,7 +186,7 @@ const Form = () => {
               maxLength={255}
               className={`h-10 w-full border-[1px] bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300 transition-all ${
                 errors.title
-                  ? "border-sb-red border-solid"
+                  ? "border-solid border-sb-red"
                   : "border-transparent"
               }`}
               onChange={handleChange}
@@ -193,7 +201,7 @@ const Form = () => {
               Categorie
             </label>
             {errors.category_id && (
-              <span className="text-sb-red mb-2 ml-4 text-xs font-bold tracking-wider">
+              <span className="mb-2 ml-4 text-xs font-bold tracking-wider text-sb-red">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -218,7 +226,7 @@ const Form = () => {
               name="category_id"
               className={`h-10 w-full appearance-none border-[1px] bg-sb-grey-100 bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm italic text-sb-grey-400 transition-all ${
                 errors.category_id
-                  ? "border-sb-red border-solid"
+                  ? "border-solid border-sb-red"
                   : "border-transparent"
               }`}
               onChange={handleChange}
@@ -244,7 +252,7 @@ const Form = () => {
               Header afbeelding
             </label>
             {errors.image && (
-              <span className="text-sb-red mb-2 ml-4 text-xs font-bold tracking-wider">
+              <span className="mb-2 ml-4 text-xs font-bold tracking-wider text-sb-red">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -281,7 +289,7 @@ const Form = () => {
                 name="image"
                 className={`no-repeat cursor-pointe relative h-10 w-40 border-[1px] bg-sb-grey-100 bg-[url('/assets/images/camera.svg')] bg-[size:1rem] bg-[position:8%_center] bg-no-repeat text-sm italic text-sb-grey-300 text-transparent transition-all file:hidden ${
                   errors.image
-                    ? "border-sb-red border-solid"
+                    ? "border-solid border-sb-red"
                     : "border-transparent"
                 }`}
                 accept="image/*"
@@ -304,7 +312,7 @@ const Form = () => {
               Bericht
             </label>
             {errors.content && (
-              <span className="text-sb-red mb-2 ml-4 text-xs font-bold tracking-wider">
+              <span className="mb-2 ml-4 text-xs font-bold tracking-wider text-sb-red">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -331,7 +339,7 @@ const Form = () => {
               maxLength={255}
               className={`min-h-[200px] w-full border-[1px] bg-sb-grey-100 p-4 text-sm text-sb-grey-300 transition-all ${
                 errors.content
-                  ? "border-sb-red border-solid"
+                  ? "border-solid border-sb-red"
                   : "border-transparent"
               }`}
               onChange={handleChange}
