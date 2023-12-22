@@ -150,33 +150,35 @@ const Form = () => {
           </h2>
 
           <fieldset className="mb-8">
-            <label
-              htmlFor="title"
-              className="mb-2 inline-block text-sm font-bold text-sb-grey-800"
-            >
-              Berichtnaam
-            </label>
-            {errors.title && (
-              <span className="mb-2 ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#f20d0d"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-1 inline-block align-text-bottom"
-                >
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-                {errors.title}
-              </span>
-            )}
+            <div className="mb-2">
+              <label
+                htmlFor="title"
+                className="inline-block text-sm font-bold text-sb-grey-800"
+              >
+                Berichtnaam
+              </label>
+              {errors.title && (
+                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#f20d0d"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-1 inline-block align-text-bottom"
+                  >
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  {errors.title}
+                </span>
+              )}
+            </div>
             <input
               type="text"
               id="title"
@@ -194,33 +196,35 @@ const Form = () => {
           </fieldset>
 
           <fieldset className="mb-8">
-            <label
-              htmlFor="category_id"
-              className="mb-2 inline-block text-sm font-bold text-sb-grey-800"
-            >
-              Categorie
-            </label>
-            {errors.category_id && (
-              <span className="mb-2 ml-4 text-xs font-bold tracking-wider text-sb-red">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#f20d0d"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-1 inline-block align-text-bottom"
-                >
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-                {errors.category_id}
-              </span>
-            )}
+            <div className="mb-2">
+              <label
+                htmlFor="category_id"
+                className="inline-block text-sm font-bold text-sb-grey-800"
+              >
+                Categorie
+              </label>
+              {errors.category_id && (
+                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#f20d0d"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-1 inline-block align-text-bottom"
+                  >
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  {errors.category_id}
+                </span>
+              )}
+            </div>
             <select
               id="category_id"
               name="category_id"
@@ -245,33 +249,35 @@ const Form = () => {
           </fieldset>
 
           <fieldset className="mb-8">
-            <label
-              htmlFor="image"
-              className="mb-2 inline-block text-sm font-bold text-sb-grey-800"
-            >
-              Header afbeelding
-            </label>
-            {errors.image && (
-              <span className="mb-2 ml-4 text-xs font-bold tracking-wider text-sb-red">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#f20d0d"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-1 inline-block align-text-bottom"
-                >
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-                {errors.image}
-              </span>
-            )}
+            <div className="mb-2">
+              <label
+                htmlFor="image"
+                className="inline-block text-sm font-bold text-sb-grey-800"
+              >
+                Header afbeelding
+              </label>
+              {errors.image && (
+                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#f20d0d"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-1 inline-block align-text-bottom"
+                  >
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  {errors.image}
+                </span>
+              )}
+            </div>
             <div className="relative flex items-center">
               <button
                 className="absolute left-[48px] top-[8px] z-[1] cursor-pointer rounded-[20px] border-0 bg-sb-grey-500 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900"
@@ -305,33 +311,35 @@ const Form = () => {
           </fieldset>
 
           <fieldset className="mb-8">
-            <label
-              htmlFor="content"
-              className="mb-2  inline-block text-sm font-bold text-sb-grey-800"
-            >
-              Bericht
-            </label>
-            {errors.content && (
-              <span className="mb-2 ml-4 text-xs font-bold tracking-wider text-sb-red">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#f20d0d"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-1 inline-block align-text-bottom"
-                >
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-                {errors.content}
-              </span>
-            )}
+            <div className="mb-2">
+              <label
+                htmlFor="content"
+                className="inline-block text-sm font-bold text-sb-grey-800"
+              >
+                Bericht
+              </label>
+              {errors.content && (
+                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#f20d0d"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-1 inline-block align-text-bottom"
+                  >
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  {errors.content}
+                </span>
+              )}
+            </div>
             <textarea
               id="content"
               name="content"
