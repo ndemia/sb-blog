@@ -95,7 +95,7 @@ const Form = () => {
       (input) => !formContent[input as keyof typeof formContent],
     );
 
-    console.log(formContent);
+    console.log(formContent.image);
     console.log(emptyInputs);
 
     // If there is any empty input at all
@@ -290,7 +290,7 @@ const Form = () => {
                 </span>
               )}
             </div>
-            <div className="relative flex items-center">
+            <div className="relative flex flex-wrap items-center">
               <button
                 className="absolute left-[48px] top-[8px] z-[1] cursor-pointer rounded-[20px] border-0 bg-sb-grey-500 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900"
                 onClick={(event) => {
@@ -315,9 +315,11 @@ const Form = () => {
                 onChange={handleChange}
               ></input>
               {formContent.image && (
-                <span className="ml-2 inline-block text-xs text-sb-black">
-                  {formContent.image.name}
-                </span>
+                <>
+                  <span className="ml-2 inline-block w-[150px] overflow-hidden text-ellipsis whitespace-nowrap text-xs text-sb-black">
+                    {formContent.image.name}
+                  </span>
+                </>
               )}
             </div>
           </fieldset>
