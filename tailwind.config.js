@@ -28,6 +28,7 @@ export default {
         70: ".7",
       },
       screens: {
+        "sb-sm": "30em",
         "sb-md": "59.375em",
       },
     },
