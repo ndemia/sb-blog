@@ -22,7 +22,7 @@ const Form = () => {
   const [categories, setCategories] = useState<CategoryInterface[]>([]);
   const formRef = useRef<HTMLFormElement | null>(null);
   const browseFileButton = useRef<HTMLInputElement | null>(null);
-  const errorMessage = `A form should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
+  const errorMessage = `${error}`;
   const [errors, setErrors] = useState<ErrorsInterface>({
     title: "",
     category_id: "",

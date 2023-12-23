@@ -37,9 +37,13 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
           consolidatedFetchOptions.requestConfig,
         );
 
-        if (!response.ok) {
+        if (!response.ok && response.status === 404) {
           throw new Error(
-            "We could not get some of the data we need from the API",
+            "404. Bron niet gevonden. Probeer het later opnieuw.",
+          );
+        } else if (!response.ok) {
+          throw new Error(
+            "Er is een fout opgetreden. Probeer het later opnieuw.",
           );
         }
 
