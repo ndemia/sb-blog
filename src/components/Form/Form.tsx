@@ -55,7 +55,16 @@ const Form = () => {
       [name]: value.trim(),
     });
 
-    // We identify for the files attribute to know we are dealing the image upload input
+    // Check
+    if (event.target.value.length >= 256) {
+      setErrors({
+        ...errors,
+        [name]: "Maximale lengte is 255 tekens.",
+      });
+      return;
+    }
+
+    // We identify the files attribute to know we are dealing the image upload input
     if ("files" in event.target && event.target.files !== null) {
       let fileList = event.target.files as FileList;
       const maxFileSizeInBytes = 3 * 1024 * 1024;
@@ -194,7 +203,7 @@ const Form = () => {
               name="title"
               placeholder="Geen titel"
               minLength={1}
-              maxLength={255}
+              maxLength={256}
               className={`h-10 w-full border-[1px] bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300 transition-all ${
                 errors.title
                   ? "border-solid border-sb-red"
@@ -355,7 +364,7 @@ const Form = () => {
               id="content"
               name="content"
               minLength={1}
-              maxLength={255}
+              maxLength={256}
               className={`min-h-[200px] w-full border-[1px] bg-sb-grey-100 p-4 text-sm text-sb-grey-300 transition-all ${
                 errors.content
                   ? "border-solid border-sb-red"
