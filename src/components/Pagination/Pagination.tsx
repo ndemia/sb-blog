@@ -85,7 +85,7 @@ const Pagination = ({
         >
           <path d="M17.086,11L3,11L3,13L17.086,13L14.086,16L15.5,17.414L20.914,12L15.5,6.586L14.086,8L17.086,11Z" />
         </svg>
-        <span>Previous page</span>
+        <span>Vorige pagina</span>
       </button>
       {blogPagination.map((pageElement, index) =>
         pageElement === "..." ? (
@@ -110,7 +110,7 @@ const Pagination = ({
         onClick={() => fetchMoreBlogposts(currentPage + 1)}
         className="group ml-1 flex flex-row text-sb-primary-100 transition-all hover:text-sb-primary-200 focus:text-sb-primary-200"
       >
-        Next page
+        Volgende pagina
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
