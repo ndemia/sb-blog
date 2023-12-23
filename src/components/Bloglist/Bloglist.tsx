@@ -76,7 +76,7 @@ const Bloglist = ({
         <Loader />
       ) : (
         <>
-          <div className="flex max-h-[490px] flex-col overflow-y-auto">
+          <div className="flex max-h-[650px] flex-col overflow-y-auto">
             <ul
               ref={blogpostsContainer}
               className="flex flex-row flex-wrap justify-evenly gap-6 p-2"
