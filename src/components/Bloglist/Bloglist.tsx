@@ -90,7 +90,7 @@ const Bloglist = ({
           </div>
           {showLoadMoreButton ? (
             <Button
-              text="Load more"
+              text="Meer laden"
               onClick={() => fetchMoreBlogposts(currentPage + 1)}
             />
           ) : (
