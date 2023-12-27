@@ -35,8 +35,12 @@
     font-display: swap;
   }
 
+  * {
+    outline-offset: 2px;
+  }
+
   html {
     font-family: "Figtree", "Montserrat", sans-serif;
-    background-color: hsl(0, 0%, 96%);
+    background-color: hsl(240, 55%, 96%);
   }
 }

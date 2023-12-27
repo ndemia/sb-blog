@@ -204,10 +204,10 @@ const Form = () => {
               placeholder="Geen titel"
               minLength={1}
               maxLength={256}
-              className={`h-10 w-full border-[1px] bg-sb-grey-100 pl-4 text-sm italic text-sb-grey-300 transition-all ${
+              className={`shadow-inset-input h-10 w-full rounded-md border-[2px] pl-4 text-sm text-sb-grey-900 transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                 errors.title
                   ? "border-solid border-sb-red"
-                  : "border-transparent"
+                  : "border-sb-grey-200"
               }`}
               onChange={handleChange}
             ></input>
@@ -246,10 +246,10 @@ const Form = () => {
             <select
               id="category_id"
               name="category_id"
-              className={`h-10 w-full appearance-none border-[1px] bg-sb-grey-100 bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm italic text-sb-grey-400 transition-all ${
+              className={`shadow-inset-input h-10 w-full appearance-none rounded-md border-[2px] bg-white bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm text-sb-grey-900 transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                 errors.category_id
                   ? "border-solid border-sb-red"
-                  : "border-transparent"
+                  : "border-sb-grey-200"
               }`}
               onChange={handleChange}
             >
@@ -298,7 +298,7 @@ const Form = () => {
             </div>
             <div className="relative flex flex-wrap items-center">
               <button
-                className="absolute left-[48px] top-[8px] z-[1] cursor-pointer rounded-[20px] border-0 bg-sb-grey-500 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900"
+                className="focus absolute left-[48px] top-[7px] z-[1] cursor-pointer rounded-[3px] border-0 bg-sb-grey-500 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900"
                 onClick={(event) => {
                   event.preventDefault();
                   browseFileButton.current?.click();
@@ -311,10 +311,10 @@ const Form = () => {
                 type="file"
                 id="image"
                 name="image"
-                className={`no-repeat cursor-pointe relative h-10 w-40 border-[1px] bg-sb-grey-100 bg-[url('/assets/images/camera.svg')] bg-[size:1rem] bg-[position:8%_center] bg-no-repeat text-sm italic text-sb-grey-300 text-transparent transition-all file:hidden ${
+                className={`no-repeat cursor-pointe shadow-inset-input relative h-10 w-40 rounded-md border-[2px] bg-[url('/assets/images/camera.svg')] bg-[size:1rem] bg-[position:8%_center] bg-no-repeat text-sm text-sb-grey-900 text-transparent transition-all file:hidden placeholder:text-sb-grey-600 focus-within:border-sb-primary-100 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                   errors.image
                     ? "border-solid border-sb-red"
-                    : "border-transparent"
+                    : "border-sb-grey-200"
                 }`}
                 accept="image/*"
                 ref={browseFileButton}
@@ -363,12 +363,13 @@ const Form = () => {
             <textarea
               id="content"
               name="content"
+              placeholder="Schrijf je bericht"
               minLength={1}
               maxLength={256}
-              className={`min-h-[200px] w-full border-[1px] bg-sb-grey-100 p-4 text-sm text-sb-grey-300 transition-all ${
+              className={`shadow-inset-input min-h-[200px] w-full rounded-md border-[2px] p-4 text-sm text-sb-grey-900 transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                 errors.content
                   ? "border-solid border-sb-red"
-                  : "border-transparent"
+                  : "border-sb-grey-200"
               }`}
               onChange={handleChange}
             ></textarea>

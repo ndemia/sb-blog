@@ -15,7 +15,7 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardPropsInterface) => {
   };
 
   return (
-    <article className="min-h-[260px] overflow-hidden shadow-[0_0_10px_0_rgba(0,0,0,0.1)]">
+    <article className="min-h-[260px] overflow-hidden rounded border-[1px] border-solid border-sb-grey-200 shadow">
       <header className="relative">
         <img
           className="max-h-16 w-full"

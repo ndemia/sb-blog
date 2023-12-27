@@ -14,8 +14,8 @@ const Blog = () => {
   }, []);
 
   return (
-    <main className="bg-sb-grey-100 p-10">
-      <section className="mx-auto flex max-w-[1024px] flex-col bg-sb-white px-6 py-8">
+    <main className="p-10">
+      <section className="mx-auto flex max-w-[1024px] flex-col rounded-lg bg-sb-white px-6 py-8 shadow-md">
         <Bloglist
           postsPerPage={postPerPage}
           showLoadMoreButton={showLoadMoreButton}

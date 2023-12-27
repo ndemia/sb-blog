@@ -64,11 +64,11 @@ const Pagination = ({
   const blogPagination = createPagination(currentPage, lastPage);
 
   return (
-    <div className="sb-sm:flex-row mt-8 flex flex-col items-center justify-center">
+    <div className="mt-8 flex flex-col items-center justify-center sb-sm:flex-row">
       <button
         disabled={currentPage <= 1 ? true : false}
         onClick={() => fetchMoreBlogposts(currentPage - 1)}
-        className={`sb-sm:text-left group mr-1 flex flex-row leading-tight transition-all ${
+        className={`group mr-1 flex flex-row leading-tight transition-all sb-sm:text-left ${
           currentPage <= 1
             ? "cursor-default text-sb-grey-500"
             : "text-sb-primary-100 hover:text-sb-primary-200 focus:text-sb-primary-200"
@@ -77,7 +77,7 @@ const Pagination = ({
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className={`sb-sm:mr-2 mr-1 w-[1rem] rotate-180  transition-all  ${
+          className={`mr-1 w-[1rem] rotate-180 transition-all  sb-sm:mr-2  ${
             currentPage <= 1
               ? "fill-sb-grey-500"
               : "fill-sb-primary-100 group-hover:fill-sb-primary-200 group-focus:fill-sb-primary-200"
@@ -110,13 +110,13 @@ const Pagination = ({
       </div>
       <button
         onClick={() => fetchMoreBlogposts(currentPage + 1)}
-        className="sb-sm:text-right group ml-1 flex flex-row leading-tight text-sb-primary-100 transition-all hover:text-sb-primary-200 focus:text-sb-primary-200"
+        className="group ml-1 flex flex-row leading-tight text-sb-primary-100 transition-all hover:text-sb-primary-200 focus:text-sb-primary-200 sb-sm:text-right"
       >
         Volgende pagina
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className="sb-sm:ml-2 ml-1 w-[1rem] fill-sb-primary-100 transition-all group-hover:fill-sb-primary-200 group-focus:fill-sb-primary-200"
+          className="ml-1 w-[1rem] fill-sb-primary-100 transition-all group-hover:fill-sb-primary-200 group-focus:fill-sb-primary-200 sb-sm:ml-2"
         >
           <path d="M17.086,11L3,11L3,13L17.086,13L14.086,16L15.5,17.414L20.914,12L15.5,6.586L14.086,8L17.086,11Z" />
         </svg>

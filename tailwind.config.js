@@ -20,9 +20,9 @@ export default {
         "sb-grey-700": "hsl(0, 0%, 30%)",
         "sb-grey-800": "hsl(0, 0%, 25%)",
         "sb-grey-900": "hsl(0, 0%, 15%)",
-        "sb-primary-100": "hsl(24, 89%, 54%)",
-        "sb-primary-200": "hsl(24, 89%, 35%)",
-        "sb-primary-300": "hsl(24, 89%, 25%)",
+        "sb-primary-100": "hsl(240, 60%, 60%)",
+        "sb-primary-200": "hsl(240, 60%, 55%)",
+        "sb-primary-300": "hsl(240, 60%, 50%)",
       },
       brightness: {
         70: ".7",
@@ -30,6 +30,9 @@ export default {
       screens: {
         "sb-sm": "30em",
         "sb-md": "59.375em",
+      },
+      boxShadow: {
+        "inset-input": "inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.1)",
       },
     },
   },
