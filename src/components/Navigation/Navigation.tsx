@@ -9,7 +9,7 @@ const Navigation = () => {
       <div>
         <NavLink
           to="/"
-          className="mx-4 text-lg font-bold text-white no-underline"
+          className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200 focus:text-sb-primary-200"
           style={({ isActive }) => ({
             borderBottom: isActive ? "2px solid hsl(24, 89%, 54%)" : "",
           })}
@@ -18,7 +18,7 @@ const Navigation = () => {
         </NavLink>
         <NavLink
           to="/blog"
-          className="mx-4 text-lg font-bold text-white no-underline"
+          className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200 focus:text-sb-primary-200"
           style={({ isActive }) => ({
             borderBottom: isActive ? "2px solid hsl(24, 89%, 54%)" : "",
           })}
