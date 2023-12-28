@@ -1,13 +1,11 @@
-import { ReactElement } from "react";
+import { useLocation } from "react-router-dom";
 
-interface HeadingProps {
-  title: string;
-}
+const Heading = () => {
+  let location = useLocation();
 
-const Heading = ({ title }: HeadingProps): ReactElement => {
   return (
     <h1 className="py-8 text-center text-5xl font-bold text-sb-white">
-      {title}
+      {location.pathname === "/" ? "Home" : "Blog"}
     </h1>
   );
 };
