@@ -8,6 +8,7 @@ import {
 import useFetch from "../../utilities/useFetch";
 import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
+import Notification from "../Notification/Notification";
 
 const Form = () => {
   // Categories needed for the form
@@ -152,9 +153,17 @@ const Form = () => {
   return (
     <>
       {error ? (
-        <p>{errorMessage}</p>
+        <Notification
+          type="error"
+          messageTitle="Error!"
+          messageText={errorMessage}
+        />
       ) : wasPostSuccessful ? (
-        <p>Post successful!</p>
+        <Notification
+          type="success"
+          messageTitle="Succes!"
+          messageText="Laad de pagina opniew om je bericht te zien."
+        />
       ) : isLoading ? (
         <Loader />
       ) : (
@@ -204,7 +213,7 @@ const Form = () => {
               placeholder="Geen titel"
               minLength={1}
               maxLength={256}
-              className={`shadow-inset-input h-10 w-full rounded-md border-[2px] pl-4 text-sm text-sb-grey-900 transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
+              className={`h-10 w-full rounded-md border-2 pl-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                 errors.title
                   ? "border-solid border-sb-red"
                   : "border-sb-grey-200"
@@ -246,7 +255,7 @@ const Form = () => {
             <select
               id="category_id"
               name="category_id"
-              className={`shadow-inset-input h-10 w-full appearance-none rounded-md border-[2px] bg-white bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm text-sb-grey-900 transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
+              className={`h-10 w-full appearance-none rounded-md border-2 bg-white bg-[url('/assets/images/chevron-down.svg')] bg-[size:14px] bg-[position:98%_center] bg-no-repeat pl-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                 errors.category_id
                   ? "border-solid border-sb-red"
                   : "border-sb-grey-200"
@@ -311,7 +320,7 @@ const Form = () => {
                 type="file"
                 id="image"
                 name="image"
-                className={`no-repeat cursor-pointe shadow-inset-input relative h-10 w-40 rounded-md border-[2px] bg-[url('/assets/images/camera.svg')] bg-[size:1rem] bg-[position:8%_center] bg-no-repeat text-sm text-sb-grey-900 text-transparent transition-all file:hidden placeholder:text-sb-grey-600 focus-within:border-sb-primary-100 focus:border-sb-primary-100 active:border-sb-primary-100 ${
+                className={`no-repeat cursor-pointe relative h-10 w-40 rounded-md border-2 bg-[url('/assets/images/camera.svg')] bg-[size:1rem] bg-[position:8%_center] bg-no-repeat text-sm text-sb-grey-900 text-transparent shadow-inset-input transition-all file:hidden placeholder:text-sb-grey-600 focus-within:border-sb-primary-100 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                   errors.image
                     ? "border-solid border-sb-red"
                     : "border-sb-grey-200"
@@ -366,7 +375,7 @@ const Form = () => {
               placeholder="Schrijf je bericht"
               minLength={1}
               maxLength={256}
-              className={`shadow-inset-input min-h-[200px] w-full rounded-md border-[2px] p-4 text-sm text-sb-grey-900 transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
+              className={`min-h-[200px] w-full rounded-md border-2 p-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
                 errors.content
                   ? "border-solid border-sb-red"
                   : "border-sb-grey-200"
