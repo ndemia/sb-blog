@@ -9,6 +9,7 @@ import {
   BlogpostInterface,
   BloglistPropsInterface,
 } from "../../utilities/interfaces";
+import Notification from "../Notification/Notification";
 
 const Bloglist = ({
   postsPerPage,
@@ -26,7 +27,7 @@ const Bloglist = ({
   const [blogposts, setBlogposts] = useState<BlogpostInterface[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const blogpostsContainer = useRef<HTMLUListElement | null>(null);
-  const errorMessage = `The latest blogposts should appear here but instead you see this error. ${error} to accomplish this. Reload the page to fix it.`;
+  const errorMessage = `${error}`;
 
   // Posts per page is defined according to the page in which Bloglist is placed
   const fetchMoreBlogposts = (pageNumber: number) => {
@@ -71,7 +72,11 @@ const Bloglist = ({
   return (
     <>
       {error ? (
-        <p>{errorMessage}</p>
+        <Notification
+          type="error"
+          messageTitle="Error!"
+          messageText={errorMessage}
+        />
       ) : isLoading ? (
         <Loader />
       ) : (
