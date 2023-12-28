@@ -9,18 +9,18 @@ const Navigation = () => {
       <div>
         <NavLink
           to="/"
-          className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200 focus:text-sb-primary-200"
+          className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200  focus:text-sb-primary-100"
           style={({ isActive }) => ({
-            borderBottom: isActive ? "2px solid hsl(240, 60%, 60%)" : "",
+            borderBottom: isActive ? "3px solid hsl(200, 10%, 49%)" : "",
           })}
         >
           Home
         </NavLink>
         <NavLink
           to="/blog"
-          className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200 focus:text-sb-primary-200"
+          className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200  focus:text-sb-primary-100"
           style={({ isActive }) => ({
-            borderBottom: isActive ? "2px solid hsl(240, 60%, 60%)" : "",
+            borderBottom: isActive ? "3px solid hsl(200, 10%, 49%)" : "",
           })}
         >
           Blog
