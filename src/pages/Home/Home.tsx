@@ -6,7 +6,7 @@ const Home = () => {
   const showLoadMoreButton = true;
 
   return (
-    <main className="grid-rows-[min-content, min-content] mx-auto grid max-w-[1024px] grid-cols-1 justify-center justify-items-stretch gap-y-6 p-10 sb-md:grid-cols-[minmax(min-content,_400px)_minmax(350px,_550px)] sb-md:gap-x-6">
+    <main className="grid-rows-[min-content, min-content] mx-auto grid min-h-[40.625em] max-w-[1024px] grid-cols-1 justify-center justify-items-stretch gap-y-6 p-10 sb-md:grid-cols-[minmax(min-content,_400px)_minmax(350px,_550px)] sb-md:gap-x-6">
       <section className="col-auto row-start-2 flex flex-col justify-center rounded-lg bg-sb-white p-8 shadow-md sb-md:col-start-1 sb-md:row-auto">
         <Form />
       </section>
