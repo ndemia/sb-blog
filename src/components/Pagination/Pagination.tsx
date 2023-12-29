@@ -87,7 +87,7 @@ const Pagination = ({
         </svg>
         <span>Vorige pagina</span>
       </button>
-      <div className="flex flex-row flex-wrap items-baseline justify-center">
+      <div className="m-4 flex flex-row flex-wrap items-baseline justify-center sb-sm:m-0">
         {blogPagination.map((pageElement, index) =>
           pageElement === "..." ? (
             <span key={index} className="mr-2">
