@@ -84,7 +84,7 @@ const Bloglist = ({
           <div className="flex max-h-[650px] flex-col overflow-y-auto">
             <ul
               ref={blogpostsContainer}
-              className="flex flex-row flex-wrap justify-evenly gap-6 p-2"
+              className="flex flex-row flex-wrap justify-evenly gap-4 p-2"
             >
               {blogposts.map((blogpost, index) => (
                 <li key={index} className="grow basis-[200px]">
