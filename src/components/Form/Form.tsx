@@ -307,7 +307,7 @@ const Form = () => {
             </div>
             <div className="relative flex flex-wrap items-center">
               <button
-                className="focus absolute left-[48px] top-[7px] z-[1] cursor-pointer rounded-[3px] border-0 bg-sb-grey-500 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-700 focus:bg-sb-grey-700 active:bg-sb-grey-900"
+                className="focus absolute left-[48px] top-[7px] z-[1] cursor-pointer rounded-[3px] border-0 bg-sb-grey-600 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-800 focus:bg-sb-grey-800 active:bg-sb-grey-900"
                 onClick={(event) => {
                   event.preventDefault();
                   browseFileButton.current?.click();

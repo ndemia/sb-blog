@@ -35,7 +35,7 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardPropsInterface) => {
         <h3 className="mb-2 w-[175px] overflow-hidden text-ellipsis whitespace-nowrap break-normal text-2xl font-bold text-sb-black">
           {blogpostData.title}
         </h3>
-        <p className="break-normal text-xs leading-5 text-sb-grey-400">
+        <p className="break-normal text-xs leading-5 text-sb-grey-600">
           {blogpostData.content}
         </p>
       </div>
