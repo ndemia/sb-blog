@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Navigation = () => {
   return (
     <nav className="flex w-full flex-row items-center justify-between px-8">
-      <NavLink to="/">
+      <NavLink to="/" aria-label="Home">
         <img src="assets/logos/logo192.png" alt="" width="50px" />
       </NavLink>
       <div>
