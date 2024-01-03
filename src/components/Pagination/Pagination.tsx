@@ -64,7 +64,10 @@ const Pagination = ({
   const blogPagination = createPagination(currentPage, lastPage);
 
   return (
-    <div className="mt-8 flex flex-col items-center justify-center sb-sm:flex-row">
+    <div
+      className="mt-8 flex flex-col items-center justify-center sb-sm:flex-row"
+      aria-label="Pagination"
+    >
       <button
         disabled={currentPage <= 1 ? true : false}
         onClick={() => fetchMoreBlogposts(currentPage - 1)}
@@ -85,7 +88,7 @@ const Pagination = ({
         >
           <path d="M17.086,11L3,11L3,13L17.086,13L14.086,16L15.5,17.414L20.914,12L15.5,6.586L14.086,8L17.086,11Z" />
         </svg>
-        <span>Vorige pagina</span>
+        Vorige pagina
       </button>
       <div className="m-4 flex flex-row flex-wrap items-baseline justify-center sb-sm:m-0">
         {blogPagination.map((pageElement, index) =>
@@ -102,6 +105,7 @@ const Pagination = ({
                   ? "bg-sb-grey-100 font-bold text-sb-grey-900"
                   : ""
               }`}
+              aria-label={`View page ${pageElement}`}
             >
               {pageElement}
             </button>
@@ -109,14 +113,23 @@ const Pagination = ({
         )}
       </div>
       <button
+        disabled={currentPage === lastPage ? true : false}
         onClick={() => fetchMoreBlogposts(currentPage + 1)}
-        className="group ml-1 flex flex-row leading-tight text-sb-primary-100 transition-all hover:text-sb-primary-200 focus:text-sb-primary-200 sb-sm:text-right"
+        className={`group ml-1 flex flex-row leading-tight  transition-all sb-sm:text-right ${
+          currentPage === lastPage
+            ? "cursor-default text-sb-grey-500"
+            : "text-sb-primary-100 hover:text-sb-primary-200 focus:text-sb-primary-200"
+        }`}
       >
         Volgende pagina
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className="ml-1 w-[1rem] fill-sb-primary-100 transition-all group-hover:fill-sb-primary-200 group-focus:fill-sb-primary-200 sb-sm:ml-2"
+          className={`ml-1 w-[1rem] transition-all sb-sm:ml-2 ${
+            currentPage === lastPage
+              ? "fill-sb-grey-500"
+              : "fill-sb-primary-100 group-hover:fill-sb-primary-200 group-focus:fill-sb-primary-200"
+          }`}
         >
           <path d="M17.086,11L3,11L3,13L17.086,13L14.086,16L15.5,17.414L20.914,12L15.5,6.586L14.086,8L17.086,11Z" />
         </svg>
