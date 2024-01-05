@@ -88,7 +88,7 @@ const Pagination = ({
         >
           <path d="M17.086,11L3,11L3,13L17.086,13L14.086,16L15.5,17.414L20.914,12L15.5,6.586L14.086,8L17.086,11Z" />
         </svg>
-        Vorige pagina
+        Previous page
       </button>
       <div className="m-4 flex flex-row flex-wrap items-baseline justify-center sb-sm:m-0">
         {blogPagination.map((pageElement, index) =>
@@ -121,7 +121,7 @@ const Pagination = ({
             : "text-sb-primary-100 hover:text-sb-primary-200 focus:text-sb-primary-200"
         }`}
       >
-        Volgende pagina
+        Next page
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"

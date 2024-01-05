@@ -4,6 +4,7 @@ import {
   BlogpostsResponseInterface,
   CategoryInterface,
   FetchReturnInterface,
+  BlogpostInterface,
 } from "./interfaces";
 
 const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
@@ -26,6 +27,12 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
         ...fetchOptions.requestConfig,
       },
     });
+  const englishCategories = {
+    Tech: "Tech",
+    Nieuws: "News",
+    Sports: "Sports",
+    Lokaal: "Local",
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,25 +45,45 @@ const useFetch = (fetchOptions: FetchPropsInterface): FetchReturnInterface => {
         );
 
         if (!response.ok && response.status === 404) {
-          throw new Error(
-            "404. Bron niet gevonden. Probeer het later opnieuw.",
-          );
+          throw new Error("404. Source not found. Please try again later.");
         } else if (!response.ok) {
-          throw new Error(
-            "Er is een fout opgetreden. Probeer het later opnieuw.",
-          );
+          throw new Error("Something wrong happened. Please try again later.");
         }
 
         const data = await response.json();
 
         // Handle different scenarios based on the type of request
         if ("data" in data) {
-          // Handle successful GET for data
-          setData(data as BlogpostsResponseInterface[]);
+          // Handle successful GET for blogposts
+          // Translate categories
+          const translatedBlogpostsCategories: BlogpostsResponseInterface[] = {
+            ...data,
+            data: data.data.map((blogpost: BlogpostInterface) => ({
+              ...blogpost,
+              category: {
+                ...blogpost.category,
+                name: englishCategories[
+                  blogpost.category.name as keyof typeof englishCategories
+                ],
+              },
+            })),
+          };
+
+          setData(
+            translatedBlogpostsCategories as BlogpostsResponseInterface[],
+          );
           setLastPage(data.last_page);
         } else if (data.length > 0) {
           // Handle successful GET for categories
-          setData(data as CategoryInterface[]);
+          const translatedCategories: CategoryInterface[] = data.map(
+            (category: CategoryInterface) => ({
+              ...category,
+              name: englishCategories[
+                category.name as keyof typeof englishCategories
+              ],
+            }),
+          );
+          setData(translatedCategories as CategoryInterface[]);
         } else {
           // Handle successful POST
           setWasPostSuccessful(true);

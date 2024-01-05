@@ -74,7 +74,7 @@ const Bloglist = ({
       {error ? (
         <Notification
           type="error"
-          messageTitle="Error!"
+          messageTitle="Error! 😵"
           messageText={errorMessage}
         />
       ) : isLoading ? (
@@ -95,7 +95,7 @@ const Bloglist = ({
           </div>
           {showLoadMoreButton ? (
             <Button
-              text="Meer laden"
+              text="Load more"
               onClick={() => fetchMoreBlogposts(currentPage + 1)}
             />
           ) : (

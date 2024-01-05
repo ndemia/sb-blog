@@ -60,7 +60,9 @@ const Form = () => {
     if (event.target.value.length >= 256) {
       setErrors({
         ...errors,
-        [name]: "Maximale lengte is 255 tekens.",
+        [name]: `${
+          name[0].toUpperCase() + name.slice(1)
+        } can be at most 255 characters.`,
       });
       return;
     }
@@ -81,7 +83,7 @@ const Form = () => {
 
         setErrors({
           ...errors,
-          image: "Selecteer een bestand onder de 3MB.",
+          image: "Maximum image size is 3MB.",
         });
 
         return;
@@ -108,10 +110,10 @@ const Form = () => {
     // If there is any empty input at all
     if (emptyInputs.length > 0) {
       const errorMessages: ErrorsInterface = {
-        title: "Een titel invoeren.",
-        category_id: "Selecteer een categorie.",
-        image: "Selecteer een afbeelding.",
-        content: "Scrijf een bericht.",
+        title: "Write a title.",
+        category_id: "Select a category.",
+        image: "Select an image.",
+        content: "Write some content.",
       };
 
       // Create an object where each empty input is associated with an error message
@@ -121,7 +123,7 @@ const Form = () => {
             ...acc,
             [input]:
               errorMessages[input as keyof ErrorsInterface] ||
-              "Dit veld is verplicht.",
+              "This field is mandatory.",
           }),
           {},
         ),
@@ -155,14 +157,14 @@ const Form = () => {
       {error ? (
         <Notification
           type="error"
-          messageTitle="Error!"
+          messageTitle="Error! 😵"
           messageText={errorMessage}
         />
       ) : wasPostSuccessful ? (
         <Notification
           type="success"
-          messageTitle="Succes!"
-          messageText="Laad de pagina opniew om je bericht te zien."
+          messageTitle="Success! 🎉"
+          messageText="Your post has been submitted. Reload the page to see it."
         />
       ) : isLoading ? (
         <Loader />
@@ -173,7 +175,7 @@ const Form = () => {
           ref={formRef}
         >
           <h2 className="mb-10 font-sans text-2xl font-bold text-sb-black">
-            Plaats een blog bericht
+            Post a blog entry
           </h2>
 
           <fieldset className="mb-8">
@@ -182,7 +184,7 @@ const Form = () => {
                 htmlFor="title"
                 className="inline-block text-sm font-bold text-sb-grey-800"
               >
-                Berichtnaam
+                Title
               </label>
               {errors.title && (
                 <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
@@ -210,7 +212,7 @@ const Form = () => {
               type="text"
               id="title"
               name="title"
-              placeholder="Geen titel"
+              placeholder="No title"
               minLength={1}
               maxLength={256}
               className={`h-10 w-full rounded-md border-2 pl-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
@@ -228,7 +230,7 @@ const Form = () => {
                 htmlFor="category_id"
                 className="inline-block text-sm font-bold text-sb-grey-800"
               >
-                Categorie
+                Category
               </label>
               {errors.category_id && (
                 <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
@@ -262,7 +264,7 @@ const Form = () => {
               }`}
               onChange={handleChange}
             >
-              <option value="">Geen categorie</option>
+              <option value="">No category</option>
               {categories.map((category, index) => (
                 <option
                   key={index}
@@ -281,7 +283,7 @@ const Form = () => {
                 htmlFor="image"
                 className="inline-block text-sm font-bold text-sb-grey-800"
               >
-                Header afbeelding
+                Header image
               </label>
               {errors.image && (
                 <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
@@ -313,7 +315,7 @@ const Form = () => {
                   browseFileButton.current?.click();
                 }}
               >
-                Kies bestand
+                Choose a file
               </button>
               <input
                 tabIndex={-1}
@@ -345,7 +347,7 @@ const Form = () => {
                 htmlFor="content"
                 className="inline-block text-sm font-bold text-sb-grey-800"
               >
-                Bericht
+                Content
               </label>
               {errors.content && (
                 <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
@@ -372,7 +374,7 @@ const Form = () => {
             <textarea
               id="content"
               name="content"
-              placeholder="Schrijf je bericht"
+              placeholder="Write your text"
               minLength={1}
               maxLength={256}
               className={`min-h-[200px] w-full rounded-md border-2 p-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
@@ -384,7 +386,7 @@ const Form = () => {
             ></textarea>
           </fieldset>
 
-          <Button text="Bericht aanmaken" />
+          <Button text="Submit post" />
         </form>
       )}
     </>
