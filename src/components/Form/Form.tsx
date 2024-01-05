@@ -56,7 +56,7 @@ const Form = () => {
       [name]: value.trim(),
     });
 
-    // Check
+    // Check input's character max length
     if (event.target.value.length >= 256) {
       setErrors({
         ...errors,
@@ -125,7 +125,7 @@ const Form = () => {
               errorMessages[input as keyof ErrorsInterface] ||
               "This field is mandatory.",
           }),
-          {},
+          { ...errors },
         ),
       } as ErrorsInterface);
 
