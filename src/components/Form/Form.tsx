@@ -128,6 +128,8 @@ const Form = () => {
           {},
         ),
       } as ErrorsInterface);
+
+      // Stop the rest of submit function
       return;
     }
 
