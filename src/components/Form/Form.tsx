@@ -187,7 +187,10 @@ const Form = () => {
                 Title
               </label>
               {errors.title && (
-                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                <span
+                  className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red"
+                  role="alert"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -212,7 +215,7 @@ const Form = () => {
               type="text"
               id="title"
               name="title"
-              placeholder="No title"
+              placeholder="Write a title"
               minLength={1}
               maxLength={256}
               className={`h-10 w-full rounded-md border-2 pl-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
@@ -233,7 +236,10 @@ const Form = () => {
                 Category
               </label>
               {errors.category_id && (
-                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                <span
+                  className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red"
+                  role="alert"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -264,7 +270,7 @@ const Form = () => {
               }`}
               onChange={handleChange}
             >
-              <option value="">No category</option>
+              <option value="">Select a category</option>
               {categories.map((category, index) => (
                 <option
                   key={index}
@@ -286,7 +292,10 @@ const Form = () => {
                 Header image
               </label>
               {errors.image && (
-                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                <span
+                  className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red"
+                  role="alert"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -309,6 +318,7 @@ const Form = () => {
             </div>
             <div className="relative flex flex-wrap items-center">
               <button
+                aria-description="Choose a header image file."
                 className="focus absolute left-[48px] top-[7px] z-[1] cursor-pointer rounded-[3px] border-0 bg-sb-grey-600 px-4 py-1 text-[0.8rem] font-light text-sb-white transition-all hover:bg-sb-grey-800 focus:bg-sb-grey-800 active:bg-sb-grey-900"
                 onClick={(event) => {
                   event.preventDefault();
@@ -350,7 +360,10 @@ const Form = () => {
                 Content
               </label>
               {errors.content && (
-                <span className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red">
+                <span
+                  className="ml-4 inline-block text-xs font-bold tracking-wider text-sb-red"
+                  role="alert"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -374,7 +387,7 @@ const Form = () => {
             <textarea
               id="content"
               name="content"
-              placeholder="Write your text"
+              placeholder="Write your post content..."
               minLength={1}
               maxLength={256}
               className={`min-h-[200px] w-full rounded-md border-2 p-4 text-sm text-sb-grey-900 shadow-inset-input transition-all placeholder:text-sb-grey-600 focus:border-sb-primary-100 active:border-sb-primary-100 ${
