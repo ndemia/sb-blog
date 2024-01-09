@@ -9,7 +9,11 @@ const Loader = () => {
       viewBox="0 0 128 128"
       enableBackground="new 0 0 128 128"
       className="grow self-center"
+      aria-live="assertive"
+      aria-atomic="true"
+      aria-hidden="false"
     >
+      <title>Loading</title>
       <rect
         id="_x30_1"
         x="10"

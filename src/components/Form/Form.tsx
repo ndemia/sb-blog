@@ -175,12 +175,13 @@ const Form = () => {
           className="flex flex-col font-sans"
           onSubmit={handleSubmit}
           ref={formRef}
+          aria-live="assertive"
         >
           <h2 className="mb-10 font-sans text-2xl font-bold text-sb-black">
             Post a blog entry
           </h2>
 
-          <fieldset className="mb-8">
+          <div className="mb-8">
             <div className="mb-2">
               <label
                 htmlFor="title"
@@ -227,9 +228,9 @@ const Form = () => {
               }`}
               onChange={handleChange}
             ></input>
-          </fieldset>
+          </div>
 
-          <fieldset className="mb-8">
+          <div className="mb-8">
             <div className="mb-2">
               <label
                 htmlFor="category_id"
@@ -283,9 +284,9 @@ const Form = () => {
                 </option>
               ))}
             </select>
-          </fieldset>
+          </div>
 
-          <fieldset className="mb-8">
+          <div className="mb-8">
             <div className="mb-2">
               <label
                 htmlFor="image"
@@ -351,9 +352,9 @@ const Form = () => {
                 </>
               )}
             </div>
-          </fieldset>
+          </div>
 
-          <fieldset className="mb-8">
+          <div className="mb-8">
             <div className="mb-2">
               <label
                 htmlFor="content"
@@ -399,7 +400,7 @@ const Form = () => {
               }`}
               onChange={handleChange}
             ></textarea>
-          </fieldset>
+          </div>
 
           <Button text="Submit post" />
         </form>

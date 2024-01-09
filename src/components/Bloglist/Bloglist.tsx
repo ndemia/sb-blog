@@ -95,7 +95,7 @@ const Bloglist = ({
           </div>
           {showLoadMoreButton ? (
             <Button
-              text="Load more"
+              text="Load more posts"
               onClick={() => fetchMoreBlogposts(currentPage + 1)}
             />
           ) : (

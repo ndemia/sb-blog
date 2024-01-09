@@ -18,6 +18,7 @@ const Navigation = () => {
         </NavLink>
         <NavLink
           to="/blog"
+          aria-label="Blog"
           className="mx-4 text-lg font-bold text-white no-underline transition-colors hover:text-sb-primary-200  focus:text-sb-primary-100"
           style={({ isActive }) => ({
             borderBottom: isActive ? "3px solid hsl(200, 10%, 49%)" : "",

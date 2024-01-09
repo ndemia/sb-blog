@@ -22,22 +22,28 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardPropsInterface) => {
           src={storageURL + blogpostData.img_url}
           alt=""
         ></img>
-        <div className="absolute bottom-0 left-0 right-0 flex flex-row justify-between px-4 pb-2">
-          <span className="text-[0.5rem] italic text-sb-white">
-            {generateReadableDate()}
-          </span>
-          <span className="text-[0.5rem] italic text-sb-white">
-            {blogpostData.category.name}
-          </span>
-        </div>
       </header>
-      <div className="px-4 py-5">
-        <h3 className="mb-2 w-[175px] overflow-hidden text-ellipsis whitespace-nowrap break-normal text-2xl font-bold text-sb-black">
+      <div className="px-4 py-2">
+        <h3 className="mb-1 w-[175px] overflow-hidden text-ellipsis whitespace-nowrap break-normal text-2xl font-bold text-sb-black">
           {blogpostData.title}
         </h3>
-        <p className="break-normal text-xs leading-5 text-sb-grey-600">
+        <p className="break-normal text-xs leading-5 text-sb-grey-800">
           {blogpostData.content}
         </p>
+      </div>
+      <div className="flex flex-row justify-between p-4">
+        <span
+          className="text-xs italic text-sb-grey-600"
+          aria-description="Post date"
+        >
+          {generateReadableDate()}
+        </span>
+        <span
+          className="text-xs italic text-sb-grey-600"
+          aria-description="Post category"
+        >
+          {blogpostData.category.name}
+        </span>
       </div>
     </article>
   );
