@@ -36,3 +36,5 @@ Lastly, not having had enough with React and TypeScript, I decided to throw Tail
 
 ## What I learned
 A ton of things! Ok, perhaps not THAT much, but it certainly feels like it. After finishing, I checked the original code I sent for this test, and I could see a lot of things I had done wrong. Which makes sense because, back then, I hadn't had any experience with it. In addition, I'm already seeing things I can improve in my website which I also built with React, so that means I made progress, yay! I'm intrigued about the idea of custom hooks, so I'll be sure to try that more in the future, if possible. I'm still trying to understand some of the concepts behind React, but I got more comfortable with it, for sure.
+
+https://blog-sb.netlify.app/
