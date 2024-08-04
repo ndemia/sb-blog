@@ -2,10 +2,10 @@ import { BlogpostCardPropsInterface } from "./../../utilities/interfaces";
 
 const BlogpostCard = ({ blogpostData }: BlogpostCardPropsInterface) => {
   const storageURL = import.meta.env.VITE_API_STORAGE_URL;
-  let blogpostDate = new Date(blogpostData.created_at);
+  const blogpostDate = new Date(blogpostData.created_at);
 
   const generateReadableDate = () => {
-    let readableDate = blogpostDate
+    const readableDate = blogpostDate
       .toISOString()
       .slice(0, 10)
       .split("-")
@@ -27,7 +27,7 @@ const BlogpostCard = ({ blogpostData }: BlogpostCardPropsInterface) => {
         <h3 className="mb-1 w-[175px] overflow-hidden text-ellipsis whitespace-nowrap break-normal text-2xl font-bold text-sb-black">
           {blogpostData.title}
         </h3>
-        <p className="break-normal text-xs leading-5 text-sb-grey-800">
+        <p className="break-all text-xs leading-5 text-sb-grey-800">
           {blogpostData.content}
         </p>
       </div>
